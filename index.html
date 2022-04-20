@@ -13,59 +13,65 @@
 
     <section>
         <div>
-            <form action="#" method="post" onsubmit="return validacion()">
+            <form action="#" method="post" id="form_agregar" onsubmit="return false">
                 <input type="number" name="cedula" placeholder="Cedula" id="cedula">
                 <input type="text" name="nombre" placeholder="Nombre" id="nombre">
                 <input type="text" name="apellido" placeholder="Apellido">
-                <input type="number" name="celular" placeholder="Celular">
+                <input type="number" name="celular" placeholder="Celular" id="celular">
                 <input type="email" name="correo" placeholder="Correo" id="correo">
                 <input type="password" name="pass" placeholder="Contraseña">
                 <input type="password" name="confir_pass" placeholder="Confirmar Contraseña">
-                <input type="submit" value="Enviar" id="enviar">
+                <button type="submit" id="enviar">Enviar</button>
+                <button type="button" id="cancelar_info">Cancelar</button>
             </form>
+            <button id="agregar">Agregar Empleado</button>
         </div>
         <div>
             <table BORDER>
-                <tr>
-                    <th>ID</th>
-                    <th>Apellido</th>
-                    <th>Nombre</th>
-                    <th>Correo</th>
-                    <th>Acciones</th>
-                </tr>
-                <tr>
-                    <td>e8asd-iasd-2321</td> 
-                    <td>Perez</td> 
-                    <td>Ivan</td>
-                    <td>iperez@uninorte.edu.co</td> 
-                    <td>
-                        <button>Mostrar</button>
-                        <button>Editar</button>
-                        <button>Borrar</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>e8asd-iasd-2321</td> 
-                    <td>Perez</td> 
-                    <td>Ivan</td>
-                    <td>iperez@uninorte.edu.co</td> 
-                    <td>
-                        <button>Mostrar</button>
-                        <button>Editar</button>
-                        <button>Borrar</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>e8asd-iasd-2321</td> 
-                    <td>Perez</td> 
-                    <td>Ivan</td>
-                    <td>iperez@uninorte.edu.co</td> 
-                    <td>
-                        <button>Mostrar</button>
-                        <button>Editar</button>
-                        <button>Borrar</button>
-                    </td>
-                </tr>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Apellido</th>
+                        <th>Nombre</th>
+                        <th>Correo</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="cuerpo_tabla">
+                    <tr>
+                        <td>e8asd-iasd-2321</td> 
+                        <td>Perez</td> 
+                        <td>Ivan</td>
+                        <td>iperez@uninorte.edu.co</td> 
+                        <td>
+                            <button class="mostrar">Mostrar</button>
+                            <button class="editar">Editar</button>
+                            <button class="borrar">Borrar</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>e8asd-iasd-2322</td> 
+                        <td>Perez</td> 
+                        <td>Ivan</td>
+                        <td>iperez@uninorte.edu.co</td> 
+                        <td>
+                            <button class="mostrar">Mostrar</button>
+                            <button class="editar">Editar</button>
+                            <button class="borrar">Borrar</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>e8asd-iasd-2323</td> 
+                        <td>Perez</td> 
+                        <td>Ivan</td>
+                        <td>iperez@uninorte.edu.co</td> 
+                        <td>
+                            <button class="mostrar">Mostrar</button>
+                            <button class="editar">Editar</button>
+                            <button class="borrar">Borrar</button>
+                        </td>
+                    </tr>
+                </tbody>
             </table>	
             
         </div>

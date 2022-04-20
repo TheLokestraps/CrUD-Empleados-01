@@ -3,6 +3,8 @@ let input_cedula = document.getElementById('cedula')
 
 let btn_enviar = document.getElementById('enviar')
 
+var itemname;
+
 input_cedula.addEventListener('keyup', (e) => {
     let cedula = input_cedula.value
 
@@ -22,6 +24,21 @@ btn_enviar.addEventListener('click', () => {
 
         if (texto.length == 0) {
             alert(`Campo ${input.getAttribute('placeholder')} se encuentra vacío`)
+        }
+        else{
+            itemname = input.getAttribute('name')
+            if(!(itemname === null)) {
+                if ((JSON.parse(localStorage.getItem(itemname)) === null)){
+                    var items = [];
+                    items.push(texto);
+                    localStorage.setItem(itemname, JSON.stringify({items}));
+                }
+                else{
+                    var itemsretrieved = Object.assign(JSON.parse(localStorage.getItem(itemname)));
+                    itemsretrieved.items.push(texto)
+                    localStorage.setItem(itemname, JSON.stringify({ 'items': itemsretrieved.items }))
+                }
+            }                
         }
 
     })

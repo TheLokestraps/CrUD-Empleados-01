@@ -1,4 +1,43 @@
 
+llenar_tabla(JSON.parse(window.localStorage.getItem('empleados')))
+
+
+function llenar_tabla(empleados) { //debe ser un objeto
+
+    if (empleados.length != undefined) {
+
+        empleados.forEach(empleado => {
+            insertar_fila(empleado)
+        });
+
+    } else {
+        insertar_fila(empleados)
+        
+    }
+
+}
+
+function insertar_fila(empleado) {
+    let tbody = document.getElementById('cuerpo_tabla')
+
+    let template_empleado = `
+        <tr>
+            <td>${empleado.id}</td> 
+            <td>${empleado.apellido}</td> 
+            <td>${empleado.nombre}</td>
+            <td>${empleado.correo}</td> 
+            <td>
+                <button class="mostrar">Mostrar</button>
+                <button class="editar">Editar</button>
+                <button class="borrar">Borrar</button>
+            </td>
+        </tr>
+    `
+
+    tbody.innerHTML = tbody.innerHTML + template_empleado
+}
+
+
 let input_cedula = document.getElementById('cedula')
 
 let btn_enviar = document.getElementById('enviar')
@@ -50,25 +89,22 @@ btn_enviar.addEventListener('click', () => {
         ...empleado
     }
 
-    let template_empleado = `
-        <tr>
-            <td>${empleado.id}</td> 
-            <td>${empleado.apellido}</td> 
-            <td>${empleado.nombre}</td>
-            <td>${empleado.correo}</td> 
-            <td>
-                <button class="mostrar">Mostrar</button>
-                <button class="editar">Editar</button>
-                <button class="borrar">Borrar</button>
-            </td>
-        </tr>
-    `
+    let local_empleados =  window.localStorage.getItem('empleados')
 
-    let tbody = document.getElementById('cuerpo_tabla')
+    if (local_empleados != null) {
+        local_empleados = JSON.parse(local_empleados)
+        local_empleados.push(empleado)
 
-    tbody.innerHTML = tbody.innerHTML + template_empleado
+        window.localStorage.setItem('empleados', JSON.stringify(local_empleados))
 
-    console.log(empleado);
+        console.log(local_empleados);
+    } else {
+        window.localStorage.setItem('empleados', JSON.stringify([empleado]))
+    }
+
+    insertar_fila(empleado)
+
+    
 })
 
 function validacion(event) {
